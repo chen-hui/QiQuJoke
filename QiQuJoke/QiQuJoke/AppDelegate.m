@@ -8,6 +8,12 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import <ShareSDK/ShareSDK.h>
+#import "DefineManager.h"
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WXApi.h"
 @interface AppDelegate ()
 
 @end
@@ -16,15 +22,52 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; 
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds ]];
     self.window.backgroundColor = [UIColor whiteColor];
     ViewController *controller= [[ViewController alloc]init];
     self.window.rootViewController=controller;
     [[self window]makeKeyAndVisible];
-
     
+    //初始化分享组件
+    [ShareSDK registerApp:kShareSDKApiKey activePlatforms:@[@(SSDKPlatformTypeQQ),@(SSDKPlatformSubTypeQZone ), @(SSDKPlatformTypeWechat),@(SSDKPlatformSubTypeWechatTimeline)] onImport:^(SSDKPlatformType platformType){
+        switch(platformType){
+            case SSDKPlatformTypeQQ:
+                [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                break;
+            case SSDKPlatformTypeWechat:
+                [ShareSDKConnector connectWeChat:[WXApi class]];
+                break;
+            case SSDKPlatformSubTypeWechatTimeline:
+                [ShareSDKConnector connectWeChat:[WXApi class]];
+                break;
+            case SSDKPlatformSubTypeQZone:
+                [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                break;
+            default:
+                break;
+        }
+        
+    }onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+        switch (platformType) {
+            case SSDKPlatformTypeQQ:
+                [appInfo SSDKSetupQQByAppId:kQQAppID appKey:kQQAppKey authType:SSDKAuthTypeBoth];
+                break;
+            case SSDKPlatformTypeWechat:
+                [appInfo SSDKSetupWeChatByAppId:kWechatAppID appSecret:kWechatAppSecret];
+                break;
+            case SSDKPlatformSubTypeQZone:
+                [appInfo SSDKSetupQQByAppId:kQQAppID appKey:kQQAppKey authType:SSDKAuthTypeBoth];
+                break;
+            case SSDKPlatformSubTypeWechatTimeline:
+                [appInfo SSDKSetupWeChatByAppId:kWechatAppID appSecret:kWechatAppSecret];
+                break;
+            default:
+                break;
+        }
+    }];
     return YES;
 }
 

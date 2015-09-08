@@ -33,9 +33,9 @@
     sayingCtrl.tabBarItem.title = NSLocalizedString(@"saying", nil);
     sayingCtrl.tabBarItem.image = [UIImage imageNamed:@"kb_b"];
     
-    [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:rvCtrl]];
-    [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:trickCtrl]];
-    [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:sayingCtrl]];
+    [self addChildViewController:[[MLNavigationController alloc] initWithRootViewController:rvCtrl]];
+    [self addChildViewController:[[MLNavigationController alloc] initWithRootViewController:trickCtrl]];
+    [self addChildViewController:[[MLNavigationController alloc] initWithRootViewController:sayingCtrl]];
 //    [self addChildViewController:rvCtrl];
 //    [self addChildViewController:trickCtrl];
 //    [self addChildViewController:sayingCtrl];

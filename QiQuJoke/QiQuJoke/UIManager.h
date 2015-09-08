@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "DXAlertView.h"
+#import <UIKit/UIKit.h>
 @interface UIManager : NSObject
 +(void)showAlert:(NSString*)content;
++(void)showAlert:(NSString *)content title:(NSString*)title;
++(UIColor*)btnDefaultColor;
 @end

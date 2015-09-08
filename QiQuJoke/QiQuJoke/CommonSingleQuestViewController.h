@@ -12,7 +12,10 @@
 #import "TrickModel.h"
 #import "RiddleModel.h"
 #import "SayingModel.h"
-@interface CommonSingleQuestViewController : UIViewController
+#import <ShareSDK/ShareSDK.h>
+#import "LXActivity.h"
+#import "UIManager.h"
+@interface CommonSingleQuestViewController : UIViewController<LXActivityDelegate>
 
 @property (nonatomic) id  cnt;
 @property (nonatomic) ContentType cntType;

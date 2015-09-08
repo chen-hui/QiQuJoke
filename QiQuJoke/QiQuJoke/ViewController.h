@@ -10,6 +10,7 @@
 #import "TrickViewController.h"
 #import "RiddleViewController.h"
 #import "SayingViewController.h"
+#import "MLNavigationController.h"
 @interface ViewController : UITabBarController
 
 

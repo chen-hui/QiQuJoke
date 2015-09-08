@@ -48,7 +48,7 @@
                 CommonTableViewController *ctvCtrl = [[CommonTableViewController alloc]initWithContentType:CTRiddle Content:cate];
                 ctvCtrl.title = cate.cateName;
                 ctvCtrl.delegate =self;
-                [ctrlArr addObject:[[UINavigationController alloc] initWithRootViewController:ctvCtrl]];
+                [ctrlArr addObject:ctvCtrl];
             }
             
             NSDictionary *parameters = @{
@@ -77,8 +77,8 @@
     [self.navigationController pushViewController:singleCtrl animated:true];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
 }
 

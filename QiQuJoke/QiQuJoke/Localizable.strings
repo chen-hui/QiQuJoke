@@ -17,3 +17,13 @@
 "all" = "全部";
 "rightAnswer" = "正确答案";
 "canYouGuess" = "你猜出来了吗";
+"share" = "分享";
+"shareToWhere" = "分享到:";
+"shareSuccess" = "分享成功";
+"shareFailed" = "分享失败";
+"shareCancel" = "分享已取消";
+"cancel" = "取消";
+"wechat" = "微信";
+"QQ" = "QQ";
+"wechatFriends" = "微信朋友圈";
+"QQZone"  = "QQ空间";

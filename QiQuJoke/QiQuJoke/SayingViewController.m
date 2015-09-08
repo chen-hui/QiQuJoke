@@ -39,7 +39,7 @@
                 CommonTableViewController *ctvCtrl = [[CommonTableViewController alloc]initWithContentType:CTSaying Content:cate];
                 ctvCtrl.title = cate.cateName;
                 ctvCtrl.delegate =self;
-                [ctrlArr addObject:[[UINavigationController alloc] initWithRootViewController:ctvCtrl]];
+                [ctrlArr addObject:ctvCtrl];
             }
             
             NSDictionary *parameters = @{
