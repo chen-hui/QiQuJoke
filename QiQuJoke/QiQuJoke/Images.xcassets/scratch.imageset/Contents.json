@@ -3,12 +3,11 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "sns_icon_24.png"
+      "filename" : "scratch.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "sns_icon_24@2x.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
